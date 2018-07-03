@@ -38,8 +38,8 @@ def download(file_id, recipient_id, security_hash, outdir=None):
         download_data = r.json()
     except JSONDecodeError as e:
         print(e)
-        print(dir(download_data))
-        print(download_data)
+        print(dir(r))
+        print(r)
         raise
 
     if 'error' in download_data.keys():
