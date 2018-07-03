@@ -13,6 +13,7 @@ import getopt
 import json
 import os
 import requests
+from simplejson.scanner import JSONDecodeError
 import sys
 if (sys.version_info > (3, 0)):
     from urllib.parse import urlparse, parse_qs
