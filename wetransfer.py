@@ -32,7 +32,15 @@ def download(file_id, recipient_id, security_hash, outdir=None):
     else:
        url = "https://wetransfer.com/api/ui/transfers/{0}/{1}/download".format(file_id, security_hash)
     r = requests.post(url)
-    download_data = r.json()
+
+    try:
+        download_data = r.json()
+    except JSONDecodeError as e:
+        print(e)
+        print(dir(download_data))
+        print(download_data)
+        raise
+
     if 'error' in download_data.keys():
         print(download_data)
         raise KeyError("URL didn't work.")
